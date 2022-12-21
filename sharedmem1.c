@@ -41,12 +41,12 @@ int main()
     clock_gettime(CLOCK_REALTIME,&a1);
     char* arr[50];
     int i;
-    for(i = 0;i<50;i++)
+    for(i = 0;i<num;i++)
     {
         arr[i] = (char*)malloc((index)*sizeof(char));
     }
 
-    for(int j = 0;j<50;j++)
+    for(int j = 0;j<num;j++)
     {
         int k;
         if(j>=10)
@@ -75,7 +75,7 @@ int main()
 
     temp = (char*) shmat(id,NULL,0);
     
-    for(int a=0;a<50;)
+    for(int a=0;a<num;)
     {
         int d = a;
         while(d<min(a+5,50))
