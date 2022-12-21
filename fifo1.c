@@ -19,7 +19,7 @@ int main(){
 
     char fifo_add[20] = "helloo";
     mkfifo(fifo_add, 0666);
-    clock_gettime(CLOCK_REALTIME,&a1);
+    
     /*To generate an array (of size 50) of strings (of length 4)*/ 
     int i=0, j=0;
 
@@ -47,6 +47,7 @@ int main(){
     
 
     /*Using FIFO*/
+    clock_gettime(CLOCK_REALTIME,&a1);
     int first_id = 0;
 
     
