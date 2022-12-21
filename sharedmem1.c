@@ -41,12 +41,12 @@ int main()
     clock_gettime(CLOCK_REALTIME,&a1);
     char* arr[50];
     int i;
-    for(i = 0;i<num;i++)
+    for(i = 0;i<50;i++)
     {
         arr[i] = (char*)malloc((index)*sizeof(char));
     }
 
-    for(int j = 0;j<num;j++)
+    for(int j = 0;j<50;j++)
     {
         int k;
         if(j>=10)
@@ -62,30 +62,30 @@ int main()
             arr[j][1] = ' ';
             k = 2;
         }
-        while(k < index-2)
+        while(k < 7)
         {
             arr[j][k] = rand()%26 + 65;
             k++;
         }
-        arr[j][index-1] = '\0';
+        arr[j][8] = '\0';
     }
     char* temp = (char*)malloc(sizeof(arr[0]));
     key_t passwd = ftok("SharedMemory",50);
-    int id = shmget(passwd,1024,0666|IPC_CREAT);
+    int id = shmget(passwd,2048,0666|IPC_CREAT);
 
     temp = (char*) shmat(id,NULL,0);
     
-    for(int a=0;a<num;)
+    for(int a=0;a<50;)
     {
         int d = a;
-        while(d<min(a+5,num))
+        while(d<min(a+5,50))
         {
             strcpy(temp,arr[d]);
             capture(&temp);
             d++;
         }
         a=d;
-        printf("MAX ID received by p1: %d\n",a-1);
+        printf("Maximum id received by p1: %d\n",a-1);
     }
     return 0;
 }
