@@ -62,12 +62,12 @@ int main()
             arr[j][1] = ' ';
             k = 2;
         }
-        while(k < 7)
+        while(k < index - 2)
         {
             arr[j][k] = rand()%26 + 65;
             k++;
         }
-        arr[j][8] = '\0';
+        arr[j][index - 1] = '\0';
     }
     char* temp = (char*)malloc(sizeof(arr[0]));
     key_t passwd = ftok("SharedMemory",50);
