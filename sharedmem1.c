@@ -71,7 +71,7 @@ int main()
     }
     char* temp = (char*)malloc(sizeof(arr[0]));
     key_t passwd = ftok("SharedMemory",50);
-    int id = shmget(passwd,2048,0666|IPC_CREAT);
+    int id = shmget(passwd,1024,0666|IPC_CREAT);
 
     temp = (char*) shmat(id,NULL,0);
     
