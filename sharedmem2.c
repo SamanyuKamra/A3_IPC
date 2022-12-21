@@ -12,7 +12,7 @@
 #include<sys/shm.h>
 #include <semaphore.h>
 
-#define num 50
+
 #define index 8
 #define file "sem"
 struct timespec a1;
@@ -41,12 +41,12 @@ int main()
 {
     char* temp = (char*)malloc((index)*sizeof(char));
     key_t passwd = ftok("SharedMemory",50);
-    int id = shmget(passwd,1024,0666|IPC_CREAT);
+    int id = shmget(passwd,2048,0666|IPC_CREAT);
     temp = (char*)shmat(id,NULL,0);
     int var = 0;
     while(var<50){
         int b = var;
-        for(;b<min(var+5,num);b++){
+        for(;b<min(var+5,50);b++){
             capture(&temp);
             printf("received by p2 : %s\n",temp);
             leave(&temp);
