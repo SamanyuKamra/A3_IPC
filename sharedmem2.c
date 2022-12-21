@@ -16,6 +16,7 @@
 #define index 8
 #define file "sem"
 struct timespec a1;
+#define num 50
 struct timespec a2;
 
 int min(int x, int y)
@@ -44,9 +45,9 @@ int main()
     int id = shmget(passwd,2048,0666|IPC_CREAT);
     temp = (char*)shmat(id,NULL,0);
     int var = 0;
-    while(var<50){
+    while(var<num){
         int b = var;
-        for(;b<min(var+5,50);b++){
+        for(;b<min(var+5,num);b++){
             capture(&temp);
             printf("received by p2 : %s\n",temp);
             leave(&temp);
