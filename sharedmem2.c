@@ -42,7 +42,7 @@ int main()
 {
     char* temp = (char*)malloc((index)*sizeof(char));
     key_t passwd = ftok("SharedMemory",50);
-    int id = shmget(passwd,2048,0666|IPC_CREAT);
+    int id = shmget(passwd,1024,0666|IPC_CREAT);
     temp = (char*)shmat(id,NULL,0);
     int var = 0;
     while(var<num){
